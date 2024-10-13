@@ -2,6 +2,7 @@ import express from "express";
 import Event from "./models/event.js";
 import { connectDB } from "./config/db.js";
 import eventRouter from "./routes/eventRouter.js";
+import userRouter from "./routes/userRouter.js";
 const app = express();
 
 connectDB();
@@ -13,6 +14,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/events", eventRouter);
+
+app.use("/users", userRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
